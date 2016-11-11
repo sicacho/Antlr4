@@ -1,0 +1,25 @@
+group 'Lamplight-Parser'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+task generateParser(type:JavaExec) {
+    main = 'org.antlr.v4.Tool'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ['-no-listener','-visitor','labeledExpr/*.g4','-o' ,'src/main/java/antlr4/generate']
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.antlr/antlr4-runtime
+    compile group: 'org.antlr', name: 'antlr4-runtime', version: '4.5.3'
+    // https://mvnrepository.com/artifact/org.antlr/antlr4
+    compile group: 'org.antlr', name: 'antlr4', version: '4.5.3'
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
