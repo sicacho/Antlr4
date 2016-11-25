@@ -1,15 +1,15 @@
 grammar LabeledExpr;
 @header{package antlr4.generate.labeledExpr;}
 prog: stat+ ;
-stat: expr NEWLINE
-    | ID '=' expr NEWLINE
-    | NEWLINE
-    ;
-expr: expr op=('*'|'/') expr
-    | expr op=('+'|'-') expr
-    | INT
-    | ID
-    | '(' expr ')';
+stat: expr NEWLINE # printExpr
+| ID '=' expr NEWLINE # assign
+| NEWLINE # blank
+;
+expr: expr op=('*'|'/') expr # MulDiv
+| expr op=('+'|'-') expr # AddSub
+| INT # int
+| ID # id
+| '(' expr ')' # parens;
 ID : [a-zA-Z]+ ;
 INT : [0-9]+ ;
 NEWLINE : '\r' ? '\n';

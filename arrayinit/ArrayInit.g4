@@ -2,6 +2,7 @@
 * ArrayInit and must match the filename: ArrayInit.g4
 */
 grammar ArrayInit;
+@header{package antlr4.generate.arrayinit;}
 /** A rule called init that matches comma-separated values between {...}. */
 init : '{' value (',' value)* '}' ; // must match at least one value
 /** A value can be either a nested array/struct or a simple integer (INT) */

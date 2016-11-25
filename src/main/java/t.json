@@ -1,0 +1,41 @@
+{
+  "_id": "db22d4c9e88b29f21c1ef7a1f801dbde",
+  "_rev": "1f8090006164de39c9818c4d01f003f0c",
+  "name": "Example rule",
+  "rule": {
+    "$or": [
+      {
+        "$and": [
+          {
+            "content": [
+              {
+                "$containsString": "example"
+              }
+            ]
+          },
+          {
+            "content": [
+              {
+                "$containsString": "example2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "isOriginalContent": [
+          {
+            "$eq": true
+          }
+        ]
+      },
+      {
+        "platform": [
+          {
+            "$eq": "twitter"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+package com.language.util;
+
+/**
+ * Created by tnkhang on 11/18/2016.
+ */
+public class Post {
+}

@@ -15,11 +15,28 @@ task generateParser(type:JavaExec) {
     args = ['-no-listener','-visitor','labeledExpr/*.g4','-o' ,'src/main/java/antlr4/generate']
 }
 
+task generateParserArray(type:JavaExec) {
+    main = 'org.antlr.v4.Tool'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ['arrayinit/*.g4','-o' ,'src/main/java/antlr4/generate']
+}
+
+task generateRule(type:JavaExec) {
+    main = 'org.antlr.v4.Tool'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ['rule/*.g4','-o' ,'src/main/java/antlr4/generate']
+}
+
 dependencies {
     // https://mvnrepository.com/artifact/org.antlr/antlr4-runtime
     compile group: 'org.antlr', name: 'antlr4-runtime', version: '4.5.3'
     // https://mvnrepository.com/artifact/org.antlr/antlr4
     compile group: 'org.antlr', name: 'antlr4', version: '4.5.3'
+// https://mvnrepository.com/artifact/org.ow2.asm/asm
+    compile group: 'org.ow2.asm', name: 'asm', version: '5.1'
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.4'
+
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
